@@ -2,7 +2,7 @@
 Download from Python library HTTP Server
 
 usage: dphs.py [-h] url
-url is set by command 'python -m http.server' or 'python -m DPHS.server'
+url is set by command 'python -m http.server' or 'python DPHS/server'
 
 Examples:
 
@@ -34,7 +34,6 @@ Successfully saved to example_dir
 > p a
 Hello, I'm file a.
 > q
-
 
 '''
 

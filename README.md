@@ -1,18 +1,20 @@
 # DPHS
-Download from Python http.server
+Download from Python http.server or server.py of this repository.
 
 # Usage
 
-###### Directory tree
-├── a
-├── b
-├── c/
-└── example_dir/
-    ├── h
-    ├── i
-    └── j/
-        └── k/
-            └── l
+###### Example directory tree
+	├── a
+	├── b
+	├── c/
+	└── example_dir/
+	    ├── h
+	    ├── i
+	    └── j/
+	        └── k/
+	            └── l
+
+`git clone github.com/chen-python-user/DPHS.git`
 
 ### 1. Connect to your server
 ```
@@ -109,7 +111,7 @@ Hello, I'm file a.
 
 **Python's http.server(/lib/python3.x/http/server.py) will use index.html to replace the page if it exists, which makes the server fail.**
 
-So we find these code in server.py
+So we find these code in server.py(copied)
 ```python3
 for index in "index.html", "index.htm":
     index = os.path.join(path, index)
