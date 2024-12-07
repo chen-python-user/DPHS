@@ -1,8 +1,8 @@
 '''
 Download from Python library HTTP Server
 
-usage: dphs.py [-h] url
-url is set by command 'python -m http.server' or 'python DPHS/server'
+usage: python dphs.py url
+url is set by command 'python -m http.server' or 'python DPHS/server.py'
 
 Examples:
 
@@ -175,7 +175,7 @@ class DownloadFromPythonHTTPSever():
 
         # 总命令
         parser = ArgParser(
-            description='A script to download files or directory from library http.server of Python3',
+            description='A script to download files or directories from http.server',
             prog='>',
             formatter_class=argparse.RawDescriptionHelpFormatter,
             epilog='Type h(help) for help.\n'
@@ -463,10 +463,10 @@ class DownloadFromPythonHTTPSever():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        description='Download from Python library HTTP Server or mylib.server',
+        description='Download from Python library http.server or DPHS/server.py',
     )
     parser.add_argument(
-        'url', help='The url which is serving mylib.server of Python3'
+        'url', help='The url which is serving by DPHS/server.py'
     )
     args = parser.parse_args()
     dphs = DownloadFromPythonHTTPSever(args.url)

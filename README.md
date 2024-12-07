@@ -1,5 +1,5 @@
 # DPHS
-Download from Python http.server or server.py of this repository.
+Download from Python library http.server or server.py of this repository.
 
 # Usage
 
