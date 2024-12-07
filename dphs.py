@@ -2,33 +2,40 @@
 Download from Python library HTTP Server
 
 usage: dphs.py [-h] url
-url is set by command 'python -m http.server'
+url is set by command 'python -m http.server' or 'python -m DPHS.server'
 
 Examples:
-    > ls
-    [1] a
-    [2] b
-    [3] c/
-    [4] example_dir/
-    > get a
-    The dest is a
-    a is downloaded
-    > ls [4]
-    [1] h
-    [2] i
-    [3] j/
-    > ls
-    [1] a
-    [2] b
-    [3] c/
-    [4] example_dir/
-    > get [4]
-    Downloading example_dir to example_dir
-    Downloading example_dir/h to example_dir/h
-    Downloading example_dir/i to example_dir/i
-    Downloading example_dir/j/ to example_dir/j/
-    Downloading example_dir/j/k to example_dir/j/k
-    > q
+
+> ls
+[1] a
+[2] b
+[3] c/
+[4] example_dir/
+> get [1]
+Downloading a
+Successfully saved to a
+> ls [4]
+[1] h
+[2] i
+[3] j/
+> ls .
+[1] a
+[2] b
+[3] c/
+[4] example_dir/
+> get -r [4]
+Downloading example_dir
+Downloading example_dir/h to example_dir/h
+Downloading example_dir/i to example_dir/i
+Downloading example_dir/j to example_dir/j
+Downloading example_dir/j/k to example_dir/j/k
+Downloading example_dir/j/k/l to example_dir/j/k/l
+Successfully saved to example_dir
+> p a
+Hello, I'm file a.
+> q
+
+
 '''
 
 
@@ -46,18 +53,14 @@ from pathlib import Path, PurePosixPath
 class ExitNormally(Exception):
     pass
 
-
 class Request404(Exception):
     pass
-
 
 class ArgError(Exception):
     pass
 
-
 class SpecialCharacter(Exception):
     pass
-
 
 class ArgParser(argparse.ArgumentParser):
     def exit(self, status=0, message=None):
@@ -78,7 +81,9 @@ MiB = 1024 ** 2
 
 class DownloadFromPythonHTTPSever():
     "Main Class"
+
     def __init__(self, url, encoding='utf-8'):
+        "Default encoding is utf-8"
         if url[:4] != 'http':
             self.url = 'http://' + url
         else:
