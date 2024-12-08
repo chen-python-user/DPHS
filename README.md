@@ -116,8 +116,8 @@ So we find these code in server.py(copied)
 for index in "index.html", "index.htm":
     index = os.path.join(path, index)
     if os.path.isfile(index):
-		path = index
-		break
+        path = index
+        break
 else:
 	return self.list_directory(path)
 ```
