@@ -49,6 +49,11 @@ And you can use **\[cmd\] -h** to show help.
 [1] h
 [2] i
 [3] j/
+> ls .
+[1] a
+[2] b
+[3] c/
+[4] example_dir/
 ```
 
 ##### get(g)
