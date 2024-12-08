@@ -3,6 +3,8 @@ Download from Python library http.server or server.py of this repository.
 
 # Usage
 
+`git clone https://github.com/chen-python-user/DPHS.git`
+
 ###### Example directory tree
 	├── a
 	├── b
@@ -14,11 +16,9 @@ Download from Python library http.server or server.py of this repository.
 	        └── k/
 	            └── l
 
-`git clone github.com/chen-python-user/DPHS.git`
-
 ### 1. Connect to your server
 ```
-$ python DPHS/dphs.py 192.168.1.6:8000
+$ python dphs.py 192.168.1.6:8000
 Connecting to http://192.168.1.6:8000
 Connected Successfully
 > 
@@ -116,10 +116,10 @@ So we find these code in server.py(copied)
 for index in "index.html", "index.htm":
     index = os.path.join(path, index)
     if os.path.isfile(index):
-    ¦   path = index
-    ¦   break
-    else:
-    ¦   return self.list_directory(path)
+		path = index
+		break
+else:
+	return self.list_directory(path)
 ```
 Replace it with(Actually, it's just keeping the last line and decrease indent)
 ```python3
@@ -127,7 +127,7 @@ return self.list_directory(path)
 ```
 
 ###### Or you can use server.py of this repository
-`python DPHS/server.py`
+`python server.py`
 
 \*: It's modified from Python3.10 of Linux
 

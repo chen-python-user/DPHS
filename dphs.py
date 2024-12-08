@@ -2,7 +2,7 @@
 Download from Python library HTTP Server
 
 usage: python dphs.py url
-url is set by command 'python -m http.server' or 'python DPHS/server.py'
+url is set by command 'python -m http.server' or 'python server.py'
 
 Examples:
 
@@ -151,8 +151,8 @@ class DownloadFromPythonHTTPSever():
         return self.parse_html(text)
 
     def parse_html(self, text):
-        '''Return a dict of files and directories. And result's value will be True if result is a file, False if result is a directory'''
-        '''0 represents file, 1 represents link file and 2 represents directory, 3 represents link directory'''
+        '''Return a dict of files and directories. And result's value will be True if result is a file, False if result is a directory
+        0 represents file, 1 represents link file and 2 represents directory, 3 represents link directory'''
         reg = re.compile(r'<li><a href="(.*?)">(.*?)</a></li>')
         contents = reg.findall(text)
         results = []
@@ -175,7 +175,7 @@ class DownloadFromPythonHTTPSever():
 
         # 总命令
         parser = ArgParser(
-            description='A script to download files or directories from http.server',
+            description='A script to download files or directories from http.server or server.py',
             prog='>',
             formatter_class=argparse.RawDescriptionHelpFormatter,
             epilog='Type h(help) for help.\n'
@@ -444,7 +444,7 @@ class DownloadFromPythonHTTPSever():
                 logging.critical('Exception: ' + str(e))
 
     def pretreat(self):
-        '''Check the connection and create parser '''
+        '''Check the connection and create parser'''
         print('Connecting to', self.url)
         self.request()
         print('Connected Successfully')
@@ -463,10 +463,10 @@ class DownloadFromPythonHTTPSever():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        description='Download from Python library http.server or DPHS/server.py',
+        description='Download from Python library http.server or server.py',
     )
     parser.add_argument(
-        'url', help='The url which is serving by DPHS/server.py'
+        'url', help='The url'
     )
     args = parser.parse_args()
     dphs = DownloadFromPythonHTTPSever(args.url)
